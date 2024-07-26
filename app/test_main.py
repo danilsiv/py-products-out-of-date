@@ -21,7 +21,7 @@ def test_should_return_empty_list(
         product: MagicMock
 ) -> None:
     assert outdated_products(product) == []
-    product[0]["expiration_data"] = (datetime.date.today()
+    product[0]["expiration_date"] = (datetime.date.today()
                                      + datetime.timedelta(days=1))
     assert outdated_products(product) == []
 
@@ -29,6 +29,6 @@ def test_should_return_empty_list(
 def test_should_return_salmon(
         product: MagicMock
 ) -> None:
-    product[0]["expiration_data"] = (datetime.date.today()
+    product[0]["expiration_date"] = (datetime.date.today()
                                      - datetime.timedelta(days=1))
     assert outdated_products(product) == ["salmon"]
